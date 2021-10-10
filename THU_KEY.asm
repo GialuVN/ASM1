@@ -1,0 +1,43 @@
+ORG 0
+MAIN:
+	SETB P1.0
+	SETB P1.1
+LAP:
+	JNB P1.0,CV1
+	JNB P1.1,CV2
+	JMP LAP
+	
+CV1:
+	CPL P2.0
+	
+	
+L1:	
+	MOV R7,#100	
+L5:
+	CALL DELAY
+	JNB P1.0,L1
+	DJNZ R7,L5
+
+	JMP LAP
+CV2:
+	CPL P2.1
+	
+L2:	
+	MOV R7,#100	
+L6:
+	CALL DELAY
+	JNB P1.1,L2
+	DJNZ R7,L6
+	
+	JMP LAP
+	
+	
+
+	
+	
+	
+DELAY:
+	MOV R0,#255
+	DJNZ R0,$
+	RET
+	END

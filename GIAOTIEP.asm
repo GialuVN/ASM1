@@ -1,0 +1,4 @@
+ORG 00H
+MOV P3,#01H
+
+END
